@@ -1,0 +1,12 @@
+/nbproject/*
+/.svn/*
+.idea/
+
+node_modules
+/coverage
+npm-debug.log
+
+*.gz
+*.jar
+*.properties
+.editorconfig
