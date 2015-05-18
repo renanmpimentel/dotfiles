@@ -47,9 +47,6 @@
 [format]
     pretty = format:'%C(red)%h%Creset: %C(cyan)%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset'
 
-[init]
-    templatedir = ~/.git-templates
-
 [alias]
     # help
     aliases = config --get-regexp alias
