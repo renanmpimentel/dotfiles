@@ -1,12 +1,14 @@
 [user]
     email = renan.pimentel@gmail.com
     name = Renan Pimentel
-
 [hub]
     protocol = https
 
+[http]
+    sslVerify = false
+
 [core]
-    editor = subl
+    editor = atom
     longpaths = true
     attributesfile = ~/.gitattributes
     excludesfile = ~/.gitignore_global
@@ -47,6 +49,9 @@
 [format]
     pretty = format:'%C(red)%h%Creset: %C(cyan)%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset'
 
+[init]
+    templatedir = ~/.git-templates
+
 [alias]
     # help
     aliases = config --get-regexp alias
@@ -62,11 +67,9 @@
     tag = tag
 
     # General
-    revert-merge = reset --hard HEAD^
     master = checkout master
     undo = reset --soft HEAD~1
     all = add --all
-    ps = !"git pull; git submodule foreach git pull origin master"
     co = checkout
     cb = checkout -b
     ci = commit
@@ -75,7 +78,24 @@
     s = status -s
     a = add
     d = diff
+    pm = push origin master
+    pl = pull origin master
+
+    # Branch
+    pub = "!git push origin \"$(git rev-parse --abbrev-ref HEAD)\""
+    plb = "!git pull origin \"$(git rev-parse --abbrev-ref HEAD)\""
+    branch-stream = "!git branch --set-upstream-to=origin/\"$(git rev-parse --abbrev-ref HEAD)\""
+
+    # Merge
+    revert-merge = reset --hard HEAD^
     m = merge --no-edit
+
+    # Submodule
+    sm = push origin HEAD:master
+    ps = !"git pull; git submodule foreach git pull origin master"
+
+    # Remove all remote merged
+    #rm-merge = branch -r --merged | grep -v master | sed 's/origin\///' | xargs -n 1 git push --delete origin
 
     # Diff & Logs
     diffst = diff --stat                                   # Diff overview
